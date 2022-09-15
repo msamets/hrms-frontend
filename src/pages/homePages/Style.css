@@ -1,0 +1,87 @@
+.homeForEmployer--Pagination{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.homeForEmployer--JobAdvCategory{
+    margin: 20px 10px;
+    align-items: center;
+    display: flex;
+    justify-content: left;
+}
+
+.homeForEmployer{
+    margin: 85px;
+    box-shadow: 1px 3px 7.5px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    letter-spacing: 0.075em;
+
+}
+
+.homeForEmployer--Header{
+    text-align: center;
+    font-weight: 700;
+}
+
+.cardButton{
+    align-items: center;
+    display: flex;
+    justify-content: right;
+}
+
+.homeForSystemEmployee{
+    margin: 50px;
+    box-shadow: 1px 3px 7.5px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    letter-spacing: 0.075em;
+}
+
+.homeForSystemEmployee--GridTitle{
+    text-align: center;
+}
+
+.jobSeekerTableForSystemEmployee{
+    margin: 20px;
+    
+}
+
+.jobSeekerTableForSystemEmployee--Pagination{
+    margin-top: 20px;
+}
+
+.homeForSystemEmployee--GridTitle--Button{
+    align-items: center;
+    display: flex;
+    justify-content: right;
+}
+
+.employerTableForSystemEmployee{
+    margin: 20px;
+}
+
+.employerTableForSystemEmployee--Pagination{
+    margin-top: 20px;
+}
+.jobAdvertisementTableForSystemEmployee{
+    margin: 20px;
+}
+.jobAdvertisementTableForSystemEmployee--Pagination{
+    margin-top: 20px;
+}
+
+.homeForJobSeeker{
+    margin: 85px;
+    box-shadow: 1px 3px 7.5px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    letter-spacing: 0.075em;
+}
+
+.homeForJobSeeker--Title{
+    text-align: center;
+}
+
+.jobAdvertisementListForJobSeekerHome{
+    margin: 10px;
+}

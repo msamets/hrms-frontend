@@ -1,0 +1,30 @@
+.props--main{
+    margin: 120px;
+    margin-top: 90px;
+    box-shadow: 1px 3px 7.5px rgba(0, 0, 0, 0.2);
+}
+.props--employer{
+    margin-left: 10px;
+}
+.props--employer--button{
+    margin-top: 50px;
+}
+
+
+.props--job{
+    margin: 20px;
+    box-shadow: 1px 3px 7.5px rgba(0, 0, 0, 0.2);
+}
+.props--job--inside{
+    margin: 20px;
+}
+.create--main{
+    margin: 160px;
+    margin-top: 90px;
+    box-shadow: 1px 3px 7.5px rgba(0, 0, 0, 0.2);
+}
+.create--inside{
+    margin: 20px;
+    padding-top: 20px;
+}
+

@@ -1,0 +1,31 @@
+.table{
+    margin: 20px;
+}
+
+.cv{
+    margin: 50px 250px;
+    border-style: hidden;
+    border-color: coral;
+    border-width: 3px;
+    box-shadow: 1px 3px 7.5px rgba(0, 0, 0, 0.2);
+}
+
+.cv--header{
+    padding-left: 45%;
+    padding-top: 20px;
+}
+.cv--props{
+    margin: 20px;
+}
+.descriptions{
+    margin: 30px 60px;
+    
+    
+    box-shadow: 1px 3px 7.5px rgba(0, 0, 0, 0.2);
+}
+.descriptions--inside{
+    padding: 30px;
+}
+.github--linkedin{
+    padding-top: 5px;
+}

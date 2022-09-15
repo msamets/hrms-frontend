@@ -1,0 +1,37 @@
+
+.nav {
+    height: 100px;
+    
+    
+    background-color: #faebd7;
+    box-shadow: 1px 3px 7.5px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    letter-spacing: 0.075em;
+}
+.nav--logo{
+    margin-left: 100px;
+    max-width: 100px;
+    height: 90px;
+    
+    
+}
+
+
+/* nav > h1, nav > h2, nav > h4 {
+    margin: 0;
+    padding: 15px;
+    font-weight: 700;
+}
+
+nav >h2 {
+    margin-right: auto;
+}
+nav > h4{
+    margin: auto;
+    text-align: center;
+} */
+
+.menu--right{
+    margin-right: auto;
+    padding-right: 100px;
+}
