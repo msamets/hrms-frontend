@@ -16,13 +16,14 @@ import JobseekerAccount from './pages/accountPages/JobSeekerAccount';
 import EmployerAccount from './pages/accountPages/EmployerAccount';
 import SystemEmployeeAccount from './pages/accountPages/SystemEmployeeAccount';
 import WhoAppliedToJobAdv from './pages/WhoAppliedToJobAdv';
+import SignUpForEmployer from './pages/signUpPages/SignUpForEmployer';
 
 
 function App() {
   return (
     <div>
       <NavBar/>
-      <WhoAppliedToJobAdv/>
+      <SignUpForEmployer/>
     </div>
   );
 }
