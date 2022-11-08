@@ -1,6 +1,15 @@
 import React from "react";
-import { Form, Checkbox, Button, Placeholder, TextArea, FormField } from "semantic-ui-react";
+import { Form, Checkbox, Button, Placeholder, TextArea, FormField, Dropdown } from "semantic-ui-react";
+import "./JobAdvStyle.css";
 
+const workingTypes = [
+    {key:"Remote", text:"Remote", value:"Remote"},
+    {key:"Hybrid", text:"Hybrid", value:"Hybrid"}
+]
+const workingTimes = [
+    {key:"Full Time", text:"Full Time", value:"Full Time"},
+    {key:"Part Time", text:"Part Time", value:"Part Time"}
+]
 
 export default function JobAdvertisementCreate() {
     return (
@@ -22,6 +31,22 @@ export default function JobAdvertisementCreate() {
                         <Form.Input fluid label='Max. Salary' placeholder='Max. Salary' />
                     </Form.Group>
 
+                    <Form.Group>
+                        
+                        <Form.Dropdown 
+                        label ="Select Working Type"
+                        placeholder="Working Types"
+                        selection
+                        options = {workingTypes}
+                        />
+                        <Form.Dropdown 
+                        label = "Select Working Time"
+                        placeholder="Working Times"
+                        selection
+                        options = {workingTimes}
+                        />
+                    </Form.Group>
+
                     <FormField>
                         <label>Application Deadline</label>
                         <input placeholder='dd/mm/yyyy' />
@@ -37,8 +62,9 @@ export default function JobAdvertisementCreate() {
                         <input placeholder="Number of open position " />
                     </FormField>
 
-                    <Form.Field>
-                        <Checkbox label='Active' />
+                    <Form.Field className="signup--checkbox">
+                        <Checkbox 
+                        label='Active' />
                     </Form.Field>
                     <Button type='submit'>Create Job Advertisement</Button>
                 </Form>

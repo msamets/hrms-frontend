@@ -4,7 +4,7 @@ import { Divider, Grid, GridColumn, Image, Icon, Button, Placeholder } from "sem
 
 
 //For public, for job seeker
-export default function JobAdvertisementProps() {
+export default function JobAdvertisementDetail() {
     return (
         <div className="props--main">
             <div className="props--employer">
@@ -19,7 +19,7 @@ export default function JobAdvertisementProps() {
                         <h4> <Icon name='mail'  />Employermail@employer.com</h4>
                     </GridColumn>
                     <GridColumn width={2} className="props--employer--button">
-                        <Button >Apply To Job</Button>
+                        <Button size="large">Apply To Job</Button>
                     </GridColumn>
                 </Grid>
             </div>
@@ -34,10 +34,12 @@ export default function JobAdvertisementProps() {
                         </GridColumn>
 
                         <GridColumn width={6}>
-                        <h4><Icon name="calendar times outline"/> Application Deadline</h4>
-                        <h4><Icon name="location arrow"/> City</h4>
+                        <h3><Icon name="calendar times outline"/> Application Deadline</h3>
+                        <h3><Icon name="location arrow"/> City</h3>
                         <h3><Icon name="users" size="small" /> Open Position</h3>
                         <h3><Icon name="dollar sign"/> Salary info</h3>
+                        <h3><Icon name="time"/>Working Time</h3>
+                        <h3><Icon name="world"/> Working Type</h3>
                         </GridColumn>
                     </Grid>
                 </div>

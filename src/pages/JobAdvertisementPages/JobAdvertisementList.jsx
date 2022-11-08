@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Dropdown, Button, Pagination, Card, Icon } from 'semantic-ui-react'
-import MultiRangeSlider from "../../layouts/multiRangeSlider/MultiRangeSlider"
+import { Dropdown, Button, Pagination, Card, Icon, Grid, Segment, Input } from 'semantic-ui-react'
+import MultiRangeSlider from "./multiRangeSlider/MultiRangeSlider"
 import JobAdvertisementService from "../../services/jobAdvertisementService";
+import "./JobAdvStyle.css";
 
 //buraya jobPositionları çek backend ten.
 const selectOption = [
@@ -34,33 +35,32 @@ const cities = [
 
 
 
-export default function JobAdvertisement() {
+export default function JobAdvertisementList() {
     const [jobAdvertisements, setJobAdvertisements] = useState([])
     //lifecycle hook
     useEffect(() => {//component yüklediğinde çalışmasını istediğin kodu buraya yazıyorsun
         let jobAdvertisementService = new JobAdvertisementService()
-        jobAdvertisementService.getJobAdvertisements().then(result => setJobAdvertisements(result.data.data))
+        jobAdvertisementService.getAll().then(result => setJobAdvertisements(result.data.data))
     })
 
 
     return (
-        <div>
-            <div className="jobAdv--Categories">
-                <Dropdown
-                    style={{
-                        maxWidth: 200, position: 'absolute', left: '1.5%', top: '45%'
-                    }}
+        <Grid >
+            
+            <Grid.Column width={4}>
+                <div className="jobAdvList--Category">
+
+               <Dropdown
+                    className="jobAdvList--Category-subComponent"
                     placeholder='Job Positions'
                     fluid
                     multiple
-                    search
+                    search                   
                     selection
                     options={selectOption} />
 
                 <Dropdown
-                    style={{
-                        maxWidth: 200, position: 'absolute', left: '1.5%', top: '35%'
-                    }}
+                    className="jobAdvList--Category-subComponent"
                     placeholder='Cities'
                     fluid
                     multiple
@@ -69,112 +69,122 @@ export default function JobAdvertisement() {
                     options={cities} />
 
 
-                <MultiRangeSlider
-                    min={0}// buraya salaryler gelecek
-                    max={1000}
-                    onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)}
-                />
-                <div
-                    style={{
-                        maxWidth: 300, position: 'absolute', left: '1.5%', top: '55%'
-                    }}>
-                    <Button content='Filter' primary />
-                    <Button content='Reset Filter' secondary />
+                 <div className="jobAdvList--Category-subComponent">
+                    <Grid columns="equal">
+                        <Grid.Column>
+                    <Input
+                    
+                    size="small"
+                    id="minSalary"
+                    name="minSalary"
+                    type="number"
+                    placeholder="Minimum Salary"
+                    />
+                    </Grid.Column>
+                    <Grid.Column>
+                    <Input
+                    
+                    size="small"
+                    id="maxSalary"
+                    name="maxSalary"
+                    type="number"
+                    placeholder="Maximum Salary"
+                    />
+                    </Grid.Column>
+                    </Grid>
+                 </div >
+                    <div className="jobAdvList--Category-subComponent">
+                     <Button type="submit" content='Filter' primary />
+                     <Button type="reset" content='Reset Filter' secondary />
+                 </div>
+
+                 </div>
+            </Grid.Column>
+
+            <Grid.Column width={12}>
+                <div className="jobAdvCard-Container">
+                    <div className="jobAdvCard-List">
+                        <Card.Group>
+                            {
+                                 jobAdvertisements.map(jobAdvertisement => (
+
+                                     <Card key={jobAdvertisement.id}>
+                                         <Card.Content>
+                                             <Card.Header>{jobAdvertisement.jobPosition.jobPositionName}</Card.Header>
+                                            <Card.Meta>Şirket adı: {jobAdvertisement.employer.companyName}</Card.Meta>
+                                             <Card.Description>Oluşturulma tarihi: {jobAdvertisement.createdDate}</Card.Description>
+                                             <Card.Description>Bitiş tarihi: {jobAdvertisement.applicationDeadline}</Card.Description>
+                                            <Card.Description>Yerinde/Uzaktan: {jobAdvertisement.workingType.type}</Card.Description>
+                                             <Card.Description>Çalışma Şekli: {jobAdvertisement.workingTime.time}</Card.Description>
+                                         </Card.Content>
+                                        <Card.Content extra>
+
+                                             <Card.Content>
+                                                <Icon name='user' />{jobAdvertisement.numberOfOpenPosition}</Card.Content>
+                                             <Button basic color='green' size="mini" floated="right"   >
+                                                 View Details
+                                             </Button>
+
+                                        </Card.Content>
+                                     </Card>
+
+                                ))
+                             }
+                         </Card.Group>
+                         </div>
+                             <div className="pagination">
+                                <Pagination
+                                    
+
+
+                                    defaultActivePage={1}
+                                    firstItem={null}
+                                    lastItem={null}
+                                    pointing
+                                    secondary
+                                    totalPages={3}
+                                />
+                            </div>
                 </div>
-
-                <Pagination
-                    style={{
-                        maxWidth: 300, position: 'absolute', left: '45%', top: '90%'
-                    }}
-
-                    defaultActivePage={1}
-                    firstItem={null}
-                    lastItem={null}
-                    pointing
-                    secondary
-                    totalPages={3}
-                />
-
-            </div>
-
-
-            <div className="jobAdv--List"
-                style={{
-                    maxWidth: 400, position: 'fixed', left: '300px', top: '130px',
-                }}
-            >
-
-                <Card.Group>
-                    {
-                        jobAdvertisements.map(jobAdvertisement => (
-
-                            <Card key={jobAdvertisement.id}>
-                                <Card.Content>
-                                    <Card.Header>{jobAdvertisement.jobPosition.jobPositionName}</Card.Header>
-                                    <Card.Meta>{jobAdvertisement.employer.sirketAdi}</Card.Meta>
-                                    <Card.Description>{jobAdvertisement.createdDate}</Card.Description>
-                                    <Card.Description>{jobAdvertisement.applicationDeadline}</Card.Description>
-                                </Card.Content>
-                                <Card.Content extra>
-                                    
-                                    <Card.Content>
-                                    <Icon name='user'/>{jobAdvertisement.openPosition}</Card.Content>
-                                    <Button basic color='green' size="mini" floated="right"   >
-                                        View Details
-                                    </Button>
-                                    
-                                </Card.Content>
-                            </Card>
-
-                        ))
-                    }
-                </Card.Group>
-
-
-
-
-            </div>
-
-
-        </div>
+            </Grid.Column>
+            
+        </Grid>
     )
 }
 
-/*
+// <Grid>
+        //     <div className="jobAdvList">
 
-<div 
-            style={{
-                maxWidth: 400, position: 'fixed', left: '300px', top: '130px',
-            }}>
-                <div >
-                    <JobAdvertisementCard className="card" />
-                    <JobAdvertisementCard className="card"/>
-                    <JobAdvertisementCard className="card"/>
-                </div >
-                <div 
-                style={{
-                maxWidth: 400, position: 'fixed', left: '600px', top: '130px',
-            }}>
-                    <JobAdvertisementCard className="card"/>
-                    <JobAdvertisementCard className="card"/>
-                    <JobAdvertisementCard className="card"/>
-                </div>
-                <div  
-                style={{
-                    maxWidth: 400, position: 'fixed', left: '900px', top: '130px',
-                }}>
-                    <JobAdvertisementCard className="card"/>
-                    <JobAdvertisementCard className="card"/>
-                    <JobAdvertisementCard className="card"/>
-                </div>
-                <div  
-                style={{
-                    maxWidth: 400, position: 'fixed', left: '1200px', top: '130px',
-                }}>
-                    <JobAdvertisementCard className="card"/>
-                    <JobAdvertisementCard className="card"/>
-                    <JobAdvertisementCard className="card"/>
-                </div>
-            </div>
+        //         <Grid.Column width={3} className="jobAdvList--Category">
+        //             <div >
+        //                 
 
-*/
+
+        //             </div>
+        //         </Grid.Column>
+
+        //         <Grid.Column className="jobAdvList--Card" width={13}>
+        //             <div >
+
+                         
+
+        //                 <Pagination
+
+
+        //                     defaultActivePage={1}
+        //                     firstItem={null}
+        //                     lastItem={null}
+        //                     pointing
+        //                     secondary
+        //                     totalPages={3}
+        //                 />
+
+
+
+
+        //             </div>
+        //         </Grid.Column>
+
+
+        //     </div>
+        // </Grid>

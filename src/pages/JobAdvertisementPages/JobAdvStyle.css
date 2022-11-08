@@ -1,30 +1,73 @@
-.props--main{
+.props--main {
     margin: 120px;
     margin-top: 90px;
     box-shadow: 1px 3px 7.5px rgba(0, 0, 0, 0.2);
 }
-.props--employer{
-    margin-left: 10px;
+
+.props--employer {
+    margin: 10px;
 }
-.props--employer--button{
+
+.props--employer--button {
+
     margin-top: 50px;
+
 }
 
 
-.props--job{
+.props--job {
     margin: 20px;
     box-shadow: 1px 3px 7.5px rgba(0, 0, 0, 0.2);
+
 }
-.props--job--inside{
+
+.props--job--inside {
     margin: 20px;
 }
-.create--main{
+
+.create--main {
     margin: 160px;
     margin-top: 90px;
     box-shadow: 1px 3px 7.5px rgba(0, 0, 0, 0.2);
 }
-.create--inside{
+
+.create--inside {
     margin: 20px;
     padding-top: 20px;
 }
 
+.signup--checkbox {
+    text-align: left;
+}
+
+
+
+.jobAdvList--Category {
+    margin: 3%;
+    padding: 5%;
+    
+
+}
+
+.jobAdvList--Category-subComponent {
+    margin: 3%;
+}
+
+.jobAdvCard-Container {
+    display: flex;
+    flex-direction: column;
+    min-height: 85vh;
+}
+
+.jobAdvCard-List {
+    flex: 1;
+}
+
+.pagination {
+    justify-content: center;
+    text-align: center;
+    padding-top: 3em;
+    position: relative;
+    bottom: 0;
+    
+}

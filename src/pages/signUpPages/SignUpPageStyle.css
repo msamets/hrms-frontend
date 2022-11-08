@@ -1,8 +1,9 @@
-.signupPage {
+form {
     text-align: center;
     padding: 3rem 1rem;
 }
-
+/* eğer className koyduğumuz şeyin önüne nokta koymamız gerekiyor
+ama classname koymadan direkt bütün div veya form için yapıyorsak nokta koymaya gerek yok */
 .error {
     color: #fc8181;
     font-size: 0.75rem;
@@ -24,7 +25,7 @@ form {
     margin: 0 auto;
 }
 
-.form-label {
+form label {
     font-size: 1rem;
     font-weight: bold;
     display: block;

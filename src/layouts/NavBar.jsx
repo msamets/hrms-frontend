@@ -20,7 +20,7 @@ export default function NavBar() {
 
       />
       <Menu.Item className="menu--item"
-        name='Job Advertisement'
+        name='Job Advertisements'
 
       />
       <Menu.Item className="menu--item"
