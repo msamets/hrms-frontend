@@ -20,14 +20,16 @@ import SignUpForEmployer from './pages/signUpPages/SignUpForEmployer';
 import SignUpForJobSeeker from './pages/signUpPages/SignUpForJobSeeker';
 import { Container, Grid } from 'semantic-ui-react';
 import JobAdvertisementListForJobSeekerHome from './pages/homePages/JobSeekerHomeComponents/JobAdvertisementListForJobSeekerHome';
+import AlertPopup from './core/utilities/alert/AlertPopup';
 
 
 function App() {
   return (
     <div>
       <NavBar/>
+      <AlertPopup/>
       <div className='main'>
-      <JobAdvertisementList/>
+      <SignUpForEmployer/>
       </div>
     </div>
   );

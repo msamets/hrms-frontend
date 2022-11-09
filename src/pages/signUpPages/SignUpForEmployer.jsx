@@ -1,9 +1,10 @@
-import React from "react";
-import { Button, Checkbox, Form, Icon, Input } from 'semantic-ui-react';
+import React, { useEffect } from "react";
+import { Button, Checkbox, Form, Icon, Modal } from 'semantic-ui-react';
 import { Formik, useField, useFormik } from "formik";
 import * as Yup from "yup";
 import "./SignUpPageStyle.css";
 import EmployerService from "../../services/employerService";
+import useAlert from "../../core/utilities/alert/useAlert";
 
 
 const employerService = new EmployerService();
@@ -12,29 +13,51 @@ const websiteRegex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
 const phoneNumberRegex = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
-const onSubmit = (values, { resetForm }) => {
-    console.log(values);
-    employerService.add(values).then(response => {
-        console.log(response);
-        console.log(response.data.message);
-        //buraya modal ekle başarıyla eklendiyse tamam deyip anasayfaya yönlendirsin
-        if(response.data.success){
-            setTimeout(() => {
-                resetForm();
-            }, 100);
-        }
-    }).catch((error) => {
-        //buraya modal ekle hatayı modal şeklinde ekrana pop-up yapsın.
-        console.log(error);
-        console.log(error.response);
-    });
-    
-    
-    
-    
-};
+
+
+
+
 
 export default function SignUpForEmployer() {
+    
+
+    const {setAlert} = useAlert();
+
+    const onSubmit = (values, { resetForm }) => {
+
+        console.log(values);
+        employerService.add(values).then(response => {
+            //console.log(response);
+            //console.log(response.data.message);
+
+            
+            if (response.data.success) {
+                setTimeout(() => {
+                    setAlert("Başarıyla üye olundu, anasayfaya yönderiliyor.","success");
+                    resetForm();
+                }, 100);
+            }
+            else{
+                setAlert(response.data.message, "error");
+            }
+        }).catch((error) => {
+            //window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+            
+            //setAlert(error.response, "error");
+            //buraya modal ekle hatayı modal şeklinde ekrana pop-up yapsın.
+            console.log(error);
+            console.log(error.response);
+        });
+
+
+
+
+    };
+
+
+
+    //const { setAlert } = useAlert();
+
 
     const formik = useFormik({
         initialValues: {
@@ -180,6 +203,8 @@ export default function SignUpForEmployer() {
                     {formik.touched.acceptedTerms && formik.errors.acceptedTerms ? <div className="error"><Icon name="warning circle" />{formik.errors.acceptedTerms}</div> : null}
                 </div>
                 <button type='submit'>Submit</button>
+
+
             </form>
         </div>
     )
