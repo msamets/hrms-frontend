@@ -4,34 +4,42 @@ import "./SignUpPageStyle.css";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import JobSeekerService from "../../services/jobSeekerService";
+import useAlert from "../../core/utilities/alert/useAlert";
 
 const jobSeekerService = new JobSeekerService;
 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
 const nationalIdNumberRegexForTurkey = /^([1-9]{1})([0-9]{10})$/
 
-const onSubmit = (values, {resetForm}) => {
-    console.log(values);
-    jobSeekerService.add(values).then(response => {
-        console.log(response);
-        console.log(response.data.message);
-        //buraya modal ekle başarıyla eklendiyse tamam deyip anasayfaya yönlendirsin
-        if(response.data.success){
-            setTimeout(() => {
-                resetForm();
-            }, 100);
-        }
-    }).catch((error) =>{
-        //buraya modal ekle hatayı modal şeklinde ekrana pop-up yapsın.
-        console.log(error);
-        console.log(error.response);
-        //console.log(exception.response.data.message);
-    })
-    
-    
-};
+
 
 export default function SignUpForJobSeeker() {
+
+    const {setAlert} = useAlert();
+
+
+    const onSubmit = (values, {resetForm}) => {
+        console.log(values);
+        jobSeekerService.add(values).then(response => {
+            console.log(response);
+            console.log(response.data.message);
+            //buraya modal ekle başarıyla eklendiyse tamam deyip anasayfaya yönlendirsin
+            if(response.data.success){
+                setTimeout(() => {
+                    setAlert("Başarıyla üye olundu, anasayfaya yönderiliyor.","success");
+                    resetForm();
+                }, 100);
+            }
+            else{
+                setAlert(response.data.message, "error");
+            }
+        }).catch((error) =>{
+            console.log(error);
+            console.log(error.response);
+        })
+        
+        
+    };
 
     const formik = useFormik({
         initialValues: {

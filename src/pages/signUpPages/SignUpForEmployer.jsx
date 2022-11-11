@@ -25,7 +25,7 @@ export default function SignUpForEmployer() {
 
     const onSubmit = (values, { resetForm }) => {
 
-        console.log(values);
+        //console.log(values);
         employerService.add(values).then(response => {
             //console.log(response);
             //console.log(response.data.message);
@@ -44,7 +44,6 @@ export default function SignUpForEmployer() {
             //window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
             
             //setAlert(error.response, "error");
-            //buraya modal ekle hatayı modal şeklinde ekrana pop-up yapsın.
             console.log(error);
             console.log(error.response);
         });

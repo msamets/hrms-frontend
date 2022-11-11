@@ -2,6 +2,9 @@ import React from "react";
 import hrmsLogo from "../public/logo1.jpg"
 import "../layouts/LayoutStyle.css"
 import { Menu } from 'semantic-ui-react'
+import { Link } from "react-router-dom";
+
+
 
 
 
@@ -10,11 +13,14 @@ export default function NavBar() {
     <div className="nav">
     <Menu secondary className="menu">
 
+      
       <img src={hrmsLogo} alt="" className="nav--logo" />
+
+      <Link to={"/"}>
       <Menu.Item className="menu--item"
         name='Home'
       />
-
+      </Link>
       <Menu.Item className="menu--item"
         name='Job Seekers'
 
