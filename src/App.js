@@ -25,6 +25,8 @@ import Home from './pages/homePages/Home';
 import { Route, Routes } from 'react-router-dom';
 import SignUpForSystemEmployee from './pages/signUpPages/SignUpForSystemEmployee';
 import LoginPanel from './pages/Login';
+import JobSeekerList from './pages/list/JobSeekerList';
+import EmployerList from './pages/list/EmployerList';
 
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
           <Route exact path='/' element={<Home/>}/>
           <Route path='/employer' element={<HomeForEmployer/>} />
           <Route path='/jobSeeker' element={<HomeForJobSeeker/>} />
+          <Route path='/jobSeekerList' element={<JobSeekerList/>} />
+          <Route path='/employerList' element={<EmployerList/>} />
 
           <Route path='/account'>
             <Route path='/account/jobSeeker' element={<JobseekerAccount/>}/>

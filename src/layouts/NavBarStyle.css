@@ -16,10 +16,20 @@
     
 }
 
-
+.menu--item--button{
+    padding-right: 100px;
+    justify-content: center;
+    display: flex;
+}
 
 
 .menu--right{
-    margin-right: auto;
     padding-right: 100px;
+    
+}
+
+.menu--item{
+    justify-content: center;
+    display: flex;
+    
 }
