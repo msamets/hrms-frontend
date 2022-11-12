@@ -39,12 +39,13 @@ export default function NavBar() {
         <Link to={"/"} className="menu--item">
           <Menu.Item name='Home' icon="home" position="left" link />
         </Link>
-        <Link to={"/jobSeekerList"} className="menu--item">
-          <Menu.Item name='Job Seekers' position="left" link icon="user" />
-        </Link>
-
+      
         <Link to="/jobAdvertisement/list" className="menu--item">
           <Menu.Item name='Job Advertisements' link position="left" icon={<MdWork />} />
+        </Link>
+
+        <Link to={"/jobSeekerList"} className="menu--item">
+          <Menu.Item name='Job Seekers' position="left" link icon="user" />
         </Link>
 
         <Link to="/employerList" className="menu--item">

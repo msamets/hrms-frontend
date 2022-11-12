@@ -94,8 +94,10 @@ export default function JobAdvertisementList() {
                     </Grid>
                  </div >
                     <div className="jobAdvList--Category-subComponent">
-                     <Button type="submit" content='Filter' primary />
-                     <Button type="reset" content='Reset Filter' secondary />
+                     <Button type="submit" content='Filter' primary 
+                     style={{marginTop: "1em"}} />
+                     <Button type="reset" content='Reset Filter' secondary 
+                     style={{marginTop: "0.5em"}} />
                  </div>
 
                  </div>

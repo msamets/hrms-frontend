@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import hrmsLogo from "../public/logo1.jpg"
+import SignUpChoiceModal from "../SignUpChoiceModal";
 
 
 export default function LoginPanel() {
@@ -11,7 +12,7 @@ export default function LoginPanel() {
                 transform: 'translate(-50%, -50%)'
             }}>
                 <Header as='h2' color='brown' textAlign='center' >
-                    <Image src={hrmsLogo} /> Log-in to your account
+                    <Image src={hrmsLogo} /> Login to your account
                 </Header>
                 <Form size='large'>
                     <Segment stacked>
@@ -30,7 +31,8 @@ export default function LoginPanel() {
                     </Segment>
                 </Form>
                 <Message>
-                    New to us? <a href='#'>Sign Up</a>
+                    New to us? <SignUpChoiceModal 
+                    trigger = {<Button size="tiny" color="brown" >Sign up</Button>} />
                 </Message>
             </Grid.Column>
         </Grid>
